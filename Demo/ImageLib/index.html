@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title> JS 图片库</title>
+  <!-- js -->
+  <script type="text/javascript">
+    function showPic(e) {
+      console.log("showPic");
+      var curElement = e;
+      var imgElement = document.getElementById('imgShowSectionID');
+      var source = curElement.getAttribute('href');
+      imgElement.setAttribute('src',source);
+    }
+  </script>
+
+  <!-- css  -->
+  <style>
+    .imgListCL{
+      font-size: 42px;
+    }
+
+    /** 图片居中显示*/
+    img{
+      display: block;
+      margin: 0 auto;
+      max-width: 100%;
+    }
+
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li class="imgListCL"><a href="http://hbimg.b0.upaiyun.com/c778bceee77e2345d83d92a5515d4b06f894c1158be3-CLWUrp_fw658" title="HuaBA" onclick="showPic(this); return false;">HuaBImageA</a></li>
+    <li class="imgListCL"><a href="http://hbimg.b0.upaiyun.com/d3228dc24493f1bcdc63ca1a642ed58bf860fe7331a35-sL7MUZ_fw658" title="HuaBB" onclick="showPic(this); return false;">HuaBImageB</a></li>
+    <li class="imgListCL"><a href="http://hbimg.b0.upaiyun.com/bb8025ef923ce29811f81287e05e2c83a2ed8ed21ee67-Uqu6uh_fw658" title="HuaBC" onclick="showPic(this); return false;">HuaBImageC</a></li>
+    <li class="imgListCL"><a href="http://hbimg.b0.upaiyun.com/569d689d4751459646f63f6b63f92a824bc19290ae65-7MX3YY_fw658" title="HuaBD" onclick="showPic(this); return false;">HuaBImageD</a></li>
+    <li class="imgListCL"><a href="http://hbimg.b0.upaiyun.com/1a32f747103cc00c93a3ddd5aa04b34d8917fe163f932-Vl3Ldj_fw658" title="HuaBE" onclick="showPic(this); return false;">HuaBImageE</a></li>
+    <li class="imgListCL"><a href="http://hbimg.b0.upaiyun.com/44492313ae4cd02d845da16bfc09339628199f1c11518-ZbuPhg_fw658" title="HuaBF" onclick="showPic(this); return false;">HuaBImageF</a></li>
+  </ul>
+  <img id="imgShowSectionID" src="http://hbimg.b0.upaiyun.com/c778bceee77e2345d83d92a5515d4b06f894c1158be3-CLWUrp_fw658" alt="图片显示"/>
+</body>
+
+</html>
