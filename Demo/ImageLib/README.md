@@ -7,4 +7,4 @@
 * 属性值获取与修改
 
 * 效果图展示
-![image](https://github.com/itwyhuaing/Web-WYH/blob/master/Demo/ImageLib/测试.gif)
+![image](https://github.com/itwyhuaing/Web-WYH/blob/master/Demo/ImageLib/效果图.gif)
