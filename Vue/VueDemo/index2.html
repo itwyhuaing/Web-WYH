@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue学习案例 2</title>
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+	</head>
+	<body>
+		<h1> Vue 实例生命周期 与 钩子</h1>
+		<div id="app">
+			<p>{{a}}</p>
+			<button type="button" v-on:click="modifyCnt">点击我</button>
+		</div>
+		<script type="text/javascript">
+			var vm = new Vue({
+				el:"#app",
+				data:{
+					a:"初始数据-1",
+				},
+				methods:{
+					modifyCnt:function(){
+						this.a = "修改数据-2";
+					}
+				},
+				// 生命周期
+				created:function(){
+					console.log('1- a is:' + this.a)
+				},
+				mounted:function(){
+					console.log('2- a is:' + this.a)
+				},
+				updated:function(){
+					console.log('3- a is:' + this.a)
+				},
+				destroyed:function(){
+					console.log('4- a is:' + this.a)
+				}
+			})
+			
+			// 钩子
+			vm.$watch('a',function(newValue,oldValue){
+				console.log("参数 a ：" + "newValue="+newValue+"oldValue="+oldValue)
+			})
+			
+		</script>
+	</body>
+</html>

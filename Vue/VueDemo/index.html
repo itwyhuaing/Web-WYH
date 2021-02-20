@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Vue学习案例</title>
+		<script src="vue.js" type="text/javascript" charset="UTF-8"></script>
+	</head>
+	<body>
+		
+		<h3>示例2，信息绑定	v-bind </h3>
+		<div id="app-2">
+		  <span v-bind:title="message">
+		    鼠标悬停几秒钟查看此处动态绑定的提示信息！
+		  </span>
+		</div>
+		<script type="text/javascript">
+			var app2 = new Vue({
+			  el: '#app-2',
+			  data: {
+			    message: '页面加载于 ' + new Date().toLocaleString()
+			  }
+			})
+		</script>
+		
+		<h3>示例3，条件句 	v-if (Chrome 上调试 app3.seen = false )</h3>
+		<div id="app-3">
+		  <p v-if="seen">现在你看到我了</p>
+		</div>
+		<script type="text/javascript">
+			var app3 = new Vue({
+			  el: '#app-3',
+			  data: {
+				seen: true
+			  }
+			})
+		</script>
+		
+		<h3>示例4，循环/遍历数组	v-for </h3>
+		<div id="app-4">
+			<ol>
+				<li v-for="dt in ds">
+					{{dt.text}}
+				</li>
+			</ol>
+		</div>
+		<script type="text/javascript">
+			var app4 = new Vue({
+				el:"#app-4",
+				data:{
+					ds:[
+						{text:'步骤1'},
+						{text:'步骤2'},
+						{text:'步骤3'},
+						{text:'步骤4'},
+						{text:'步骤5'},
+						{text:'步骤6'}
+					]
+				}
+			})
+		</script>
+		
+		<h3>示例5，点击事件	v-on </h3>
+		<div id="app-5">
+			<p>{{msg}}</p>
+			<button v-on:click="reverseMessage">反转消息</button>
+		</div>
+		<script type="text/javascript">
+			var app5 = new Vue({
+				el:'#app-5',
+				data:{
+					msg:'Helloe world !'	
+				},
+				methods:{
+					reverseMessage:function(){
+						this.msg = this.msg.split('').reverse().join('')
+					}
+				}
+			})
+		</script>
+		
+		<h3>示例6，用户输入 数据绑定	 v-model </h3>
+		<div id="app-6">
+			<p> {{ message }} </p>
+			<input placeholder="请输入内容" />
+			<input v-model="cnt" />
+		</div>
+		<script type="text/javascript">
+			var app6 = new Vue({
+				el:"#app-6",
+				data:{
+					message:'标题内容',
+					cnt:"测试信息"
+				}
+			})
+		</script>
+		
+		<h3>示例8，组件	Vue.component 、this.$emit、clicknow </h3>
+		<div id="app-8">
+			<button-counter title="第一个" them="年" @clicknow="clicknow"></button-counter>
+			<button-counter title="第二个" them="月" @clicknow="clicknow"></button-counter>
+		</div>
+		<script type="text/javascript">
+			Vue.component("button-counter",{
+				props:["title","them"],
+				data:function(){
+					return {
+						count:0
+					}
+				},
+				template:'<button v-on:click="clickFun">You Clicked {{title}} {{them}} {{count}} times </button>',
+				methods:{
+					clickFun:function(){
+						this.count ++;
+						this.$emit('clicknow',this.count);
+					}
+				}
+			})
+			var vm8 = new Vue({
+				el:"#app-8",
+				data:{
+					
+				},
+				methods:{
+					clicknow:function(e){
+						console.log(e);
+					}
+				}
+			})
+		</script>
+		
+		<h3>示例9，列表组件 </h3>
+		<div id="app-9">
+			<ol>
+				<todo-item
+					v-for="item in dataSource"
+					v-bind:md="item"
+					v-bind:key="item.id"
+				></todo-item>
+			</ol>
+		</div>
+		<script type="text/javascript">
+			Vue.component("todo-item",{
+				props:["md"],
+				template:'<li>{{ md.text }}</li>',
+			})
+			var app9 = new Vue({
+				el:"#app-9",
+				data:{
+					dataSource:[
+						{id:0,text:'大米'},
+						{id:1,text:'面粉'},
+						{id:2,text:'花生'},
+						{id:3,text:'芝麻'},
+						{id:4,text:'玉米'},
+						{id:5,text:'高粱'},
+						{id:6,text:'豆类'},
+					]
+				}
+			})
+		</script>
+		
+		
+		
+		
+	</body>
+</html>
